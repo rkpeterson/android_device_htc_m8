@@ -37,10 +37,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import com.android.internal.util.liquid.AppHelper;
-import com.android.internal.util.liquid.ButtonsConstants;
-import com.android.internal.util.liquid.DeviceUtils;
-import com.android.internal.util.liquid.DeviceUtils.FilteredDeviceFeaturesArray;
+import com.android.internal.util.slim.AppHelper;
+import com.android.internal.util.slim.ActionConstants;
+import com.android.internal.util.slim.DeviceUtils;
+import com.android.internal.util.slim.DeviceUtils.FilteredDeviceFeaturesArray;
 
 import com.slim.device.R;
 import com.slim.device.util.ShortcutPickerHelper;
@@ -135,17 +135,17 @@ public class ScreenOffGesture extends PreferenceFragment implements
         mCamera = (Preference) prefs.findPreference(PREF_CAMERA);
 
         setupOrUpdatePreference(mSwipeDown, mPrefs
-                .getString(PREF_SWIPE_DOWN, ButtonsConstants.ACTION_MEDIA_PLAY_PAUSE));
+                .getString(PREF_SWIPE_DOWN, ActionConstants.ACTION_MEDIA_PLAY_PAUSE));
         setupOrUpdatePreference(mSwipeLeft, mPrefs
-                .getString(PREF_SWIPE_LEFT, ButtonsConstants.ACTION_MEDIA_PREVIOUS));
+                .getString(PREF_SWIPE_LEFT, ActionConstants.ACTION_MEDIA_PREVIOUS));
         setupOrUpdatePreference(mSwipeRight, mPrefs
-                .getString(PREF_SWIPE_RIGHT, ButtonsConstants.ACTION_MEDIA_NEXT));
+                .getString(PREF_SWIPE_RIGHT, ActionConstants.ACTION_MEDIA_NEXT));
         setupOrUpdatePreference(mSwipeUp, mPrefs
-                .getString(PREF_SWIPE_UP, ButtonsConstants.ACTION_TORCH));
+                .getString(PREF_SWIPE_UP, ActionConstants.ACTION_TORCH));
         setupOrUpdatePreference(mDoubleTap, mPrefs
-                .getString(PREF_DOUBLE_TAP, ButtonsConstants.ACTION_WAKE_DEVICE));
+                .getString(PREF_DOUBLE_TAP, ActionConstants.ACTION_WAKE_DEVICE));
         setupOrUpdatePreference(mCamera, mPrefs
-                .getString(PREF_CAMERA, ButtonsConstants.ACTION_CAMERA));
+                .getString(PREF_CAMERA, ActionConstants.ACTION_CAMERA));
 
         boolean enableGestures =
                 mPrefs.getBoolean(PREF_GESTURE_ENABLE, true);
@@ -231,12 +231,12 @@ public class ScreenOffGesture extends PreferenceFragment implements
     private void resetToDefault() {
         SharedPreferences.Editor editor = mPrefs.edit();
         editor.putBoolean(PREF_GESTURE_ENABLE, true);
-        editor.putString(PREF_SWIPE_UP, ButtonsConstants.ACTION_TORCH);
-        editor.putString(PREF_SWIPE_DOWN, ButtonsConstants.ACTION_MEDIA_PLAY_PAUSE);
-        editor.putString(PREF_SWIPE_LEFT, ButtonsConstants.ACTION_MEDIA_PREVIOUS);
-        editor.putString(PREF_SWIPE_RIGHT, ButtonsConstants.ACTION_MEDIA_NEXT);
-        editor.putString(PREF_DOUBLE_TAP, ButtonsConstants.ACTION_WAKE_DEVICE);
-        editor.putString(PREF_CAMERA, ButtonsConstants.ACTION_CAMERA);
+        editor.putString(PREF_SWIPE_UP, ActionConstants.ACTION_TORCH);
+        editor.putString(PREF_SWIPE_DOWN, ActionConstants.ACTION_MEDIA_PLAY_PAUSE);
+        editor.putString(PREF_SWIPE_LEFT, ActionConstants.ACTION_MEDIA_PREVIOUS);
+        editor.putString(PREF_SWIPE_RIGHT, ActionConstants.ACTION_MEDIA_NEXT);
+        editor.putString(PREF_DOUBLE_TAP, ActionConstants.ACTION_WAKE_DEVICE);
+        editor.putString(PREF_CAMERA, ActionConstants.ACTION_CAMERA);
         editor.commit();
         reloadSettings();
     }
@@ -329,7 +329,7 @@ public class ScreenOffGesture extends PreferenceFragment implements
                         new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int item) {
                             if (getOwner().sFinalActionDialogArray.values[item]
-                                    .equals(ButtonsConstants.ACTION_APP)) {
+                                    .equals(ActionConstants.ACTION_APP)) {
                                 if (getOwner().mPicker != null) {
                                     getOwner().mPendingSettingsKey = settingsKey;
                                     getOwner().mPicker.pickShortcut(getOwner().getId());
