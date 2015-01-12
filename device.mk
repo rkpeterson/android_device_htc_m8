@@ -34,10 +34,6 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 # Dot View Case
 PRODUCT_PACKAGES += Dotcase
 
-# DeviceHandler
-PRODUCT_PACKAGES += \
-    DeviceHandler
-
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.qcom \
