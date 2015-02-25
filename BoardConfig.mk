@@ -54,7 +54,7 @@ TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
 COMMON_GLOBAL_CFLAGS += -DHTCLOG
 
 # Kernel
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=qcom user_debug=31 ehci-hcd.park=3 zcache
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=qcom user_debug=31 ehci-hcd.park=3 zcache androidboot.bootdevice=msm_sdcc.1
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_SEPARATED_DT := true
@@ -70,9 +70,10 @@ TARGET_USES_QCOM_BSP := true
 
 # Audio
 AUDIO_FEATURE_DISABLED_MULTI_VOICE_SESSIONS := true
-BOARD_AUDIO_AMPLIFIER := device/htc/m8/libaudioamp
+# BOARD_AUDIO_AMPLIFIER := device/htc/m8/libaudioamp
 BOARD_USES_ALSA_AUDIO := true
 AUDIO_FEATURE_LOW_LATENCY_PRIMARY := true
+AUDIO_FEATURE_ENABLED_HWDEP_CAL := true
 AUDIO_FEATURE_ENABLED_LOW_LATENCY_CAPTURE := true
 
 # Bluetooth
@@ -151,6 +152,7 @@ BOARD_RECOVERYIMAGE_PARTITION_SIZE := 25165824
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1073741824
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 13153337344
 BOARD_FLASH_BLOCK_SIZE := 131072
+TARGET_RECOVERY_DEVICE_MODULES += chargeled
 TARGET_USERIMAGES_USE_EXT4 := true
 
 # Recovery
@@ -182,6 +184,7 @@ BOARD_SEPOLICY_UNION += \
     platform_app.te \
     property_contexts \
     recovery.te \
+    radio.te \
     rmt_storage.te \
     system_app.te \
     system_server.te \
