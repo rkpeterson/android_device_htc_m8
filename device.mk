@@ -34,29 +34,12 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 # Dot View Case
 PRODUCT_PACKAGES += Dotcase
 
-# HTC IR Blaster resources
-PRODUCT_PACKAGES += \
-    CIRModule \
-    HTC_CIR \
-    htcirlibs \
-    cir \
-    cir_fw_update \
-    libhtcirinterface_jni
-
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.qcom \
     init.qcom.rc \
     init.qcom.usb.rc \
     ueventd.qcom.rc
-
-# Recovery
-PRODUCT_PACKAGES += \
-    lpm.rc \
-    choice_fn \
-    offmode_charging \
-    offmode_charging_res_images \
-    offmode_charging_warn_res_images
 
 # Qcom init scripts for /etc
 PRODUCT_PACKAGES += \
@@ -91,10 +74,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
     device/htc/m8/configs/com.htc.software.market.xml:system/etc/permissions/com.htc.software.market.xml
 
-# DevicHandler
-PRODUCT_PACKAGES += \
-    DeviceHandler
-
 # Audio
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
@@ -105,6 +84,7 @@ PRODUCT_PACKAGES += \
     libaudio-resampler \
     libqcompostprocbundle \
     libqcomvisualizer \
+    libqcomvoiceprocessing \
     tinymix
 
 PRODUCT_PACKAGES += \
@@ -244,10 +224,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     wcnss_service
 
-# Misc Packages
-PRODUCT_PACKAGES += \
-    DeviceSettings
-
 # WiFi
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
@@ -258,10 +234,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
     $(LOCAL_PATH)/configs/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
     $(LOCAL_PATH)/configs/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
-
-# Frandom init.d
-# PRODUCT_COPY_FILES += \
-#    device/htc/m8/00_frandom:system/etc/init.d/00_frandom
 
 PRODUCT_PACKAGES += \
     hostapd \

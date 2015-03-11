@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2014 SlimRoms Project
+# Copyright (C) 2014 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,10 +17,15 @@
 LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
-LOCAL_SRC_FILES := $(call all-java-files-under, src)
-LOCAL_CERTIFICATE := platform
-LOCAL_PACKAGE_NAME := DeviceHandler
+LOCAL_SRC_FILES := chargeled.c
 
-LOCAL_PROGUARD_FLAG_FILES := proguard.flags
+LOCAL_CFLAGS += -Wall
 
-include $(BUILD_PACKAGE)
+LOCAL_STATIC_LIBRARIES := libc liblog libcutils
+LOCAL_FORCE_STATIC_EXECUTABLE := true
+
+LOCAL_MODULE := chargeled
+LOCAL_MODULE_TAGS := optional eng
+LOCAL_MODULE_CLASS := RECOVERY_EXECUTABLES
+LOCAL_MODULE_PATH := $(TARGET_RECOVERY_ROOT_OUT)/sbin
+include $(BUILD_EXECUTABLE)
