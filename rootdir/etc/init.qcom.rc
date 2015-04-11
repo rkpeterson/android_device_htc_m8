@@ -647,7 +647,7 @@ on property:sys.perf.profile=0
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor conservative
     write /sys/class/kgsl/kgsl-3d0/devfreq/governor msm-adreno-tz
     start mpdecision
-    start thermal-engine   
+    start thermal-engine
 
 on property:sys.perf.profile=1
     stop mpdecision
