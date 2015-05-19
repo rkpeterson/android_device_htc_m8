@@ -34,7 +34,7 @@ GRAPHITE := true
 LTO := true
 A15_QUAD := true
 
-USE_PREBUILT_CACHE=1
+# USE_PREBUILT_CACHE=1
 
 TARGET_OTA_ASSERT_DEVICE := htc_m8,htc_m8whl,htc_m8wl,m8,m8wl,m8wlv,m8vzw,m8whl,m8spr
 TARGET_BOARD_INFO_FILE ?= device/htc/m8/board-info.txt
