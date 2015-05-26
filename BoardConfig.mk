@@ -28,6 +28,14 @@
 # 0P6B20000 - Verizon
 # 0P6B70000 - Sprint
 
+USE_O3 := true
+STRICT := true
+GRAPHITE := true
+# LTO := true
+A15_QUAD := true
+
+# USE_PREBUILT_CACHE=1
+
 TARGET_OTA_ASSERT_DEVICE := htc_m8,htc_m8whl,htc_m8wl,m8,m8wl,m8wlv,m8vzw,m8whl,m8spr
 TARGET_BOARD_INFO_FILE ?= device/htc/m8/board-info.txt
 
@@ -172,7 +180,6 @@ BOARD_SEPOLICY_UNION += \
     file.te \
     hcheck.te \
     init.te \
-    kcal_dev.te \
     kernel.te \
     mediaserver.te \
     mm-qcamerad.te \

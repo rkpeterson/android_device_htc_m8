@@ -237,11 +237,25 @@ lib/libtuning_awb_ov2722_subcam.so
 lib/libtuning_awb_ov4688.so
 lib/libtuning_awb_s5k5e.so
 lib/libtuning_awb_vd6869.so
+<<<<<<< HEAD
 vendor/firmware/keymaster.b00
 vendor/firmware/keymaster.b01
 vendor/firmware/keymaster.b02
 vendor/firmware/keymaster.b03
 vendor/firmware/keymaster.mdt
+=======
+vendor/firmware/cmnlib.b00
+vendor/firmware/cmnlib.b01
+vendor/firmware/cmnlib.b02
+vendor/firmware/cmnlib.b03
+vendor/firmware/cmnlib.mdt
+vendor/firmware/keymaster/keymaster.b00
+vendor/firmware/keymaster/keymaster.b01
+vendor/firmware/keymaster/keymaster.b02
+vendor/firmware/keymaster/keymaster.b03
+vendor/firmware/keymaster/keymaster.mdt
+vendor/lib/drm/libdrmwvmplugin.so
+>>>>>>> ff0870f99ff461a6d2c139d0a40c9d6260830014
 vendor/lib/egl/eglsubAndroid.so
 vendor/lib/egl/libEGL_adreno.so
 vendor/lib/egl/libGLESv1_CM_adreno.so

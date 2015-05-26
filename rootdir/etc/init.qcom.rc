@@ -106,6 +106,8 @@ on fs
     setprop ro.crypto.fuse_sdcard true
 
 on post-fs-data
+    symlink /sys/kernel/debug /data/d
+
     mkdir /data/tombstones 0771 system system
     symlink /data/tombstones /tombstones
     mkdir /tombstones/modem 0771 system system
@@ -119,14 +121,6 @@ on post-fs-data
     restorecon /data/OTPData.dat
 
     mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
-
-    # Create the directories used by the Wireless subsystem
-    mkdir /data/misc/wifi 0771 wifi wifi
-    mkdir /data/misc/wifi/hostapd 0770 wifi wifi
-    mkdir /data/misc/wifi/sockets 0770 wifi wifi
-    mkdir /data/misc/wifi/wpa_supplicant 0770 wifi wifi
-    mkdir /data/misc/dhcp 0770 dhcp dhcp
-    chown dhcp dhcp /data/misc/dhcp
 
     # Create the directory used by CnE subsystem
     mkdir /data/connectivity 0771 system system
@@ -170,9 +164,6 @@ on post-fs-data
     #Create directory for FOTA
     mkdir /data/fota 0771 system system
 
-    #Create directory for hostapd
-    mkdir /data/hostapd 0770 system wifi
-
     # Create /data/time folder for time-services
     mkdir /data/time/ 0700 system system
 
@@ -189,12 +180,8 @@ on post-fs-data
     mkdir /data/data/media 0770 media media
 
     # Hardware tunables
-    chown root system /sys/devices/platform/kcal_ctrl.0/kcal
-    chown root system /sys/devices/platform/kcal_ctrl.0/kcal_ctrl
-    chmod 0664 /sys/devices/platform/kcal_ctrl.0/kcal
-    chmod 0664 /sys/devices/platform/kcal_ctrl.0/kcal_ctrl
-    restorecon /sys/devices/platform/kcal_ctrl.0/kcal
-    restorecon /sys/devices/platform/kcal_ctrl.0/kcal_ctrl
+    chown system system /sys/devices/virtual/graphics/fb0/rgb
+    chmod 0660 /sys/devices/virtual/graphics/fb0/rgb
 
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
@@ -397,13 +384,6 @@ service hciattach /system/bin/sh /system/etc/init.qcom.bt.bluedroid.sh
     group bluetooth net_bt_admin
     disabled
     oneshot
-
-service hostapd /system/bin/hostapd -dddd /data/hostapd/hostapd.conf
-    class late_start
-    user root
-    group root
-    oneshot
-    disabled
 
 service hvdcp /system/bin/hvdcp
     class core
@@ -617,7 +597,6 @@ on property:service.bootanim.exit=1
     chmod 664 /sys/devices/system/cpu/cpu1/online
     chmod 664 /sys/devices/system/cpu/cpu2/online
     chmod 664 /sys/devices/system/cpu/cpu3/online
-    write /dev/cpuctl/apps/cpu.notify_on_migrate "1"
 
     write /sys/module/cpu_boost/parameters/sync_threshold "1728000"
     write /sys/module/cpu_boost/parameters/input_boost_freq "1497600"
@@ -636,7 +615,6 @@ on property:init.svc.bootanim=stopped
 # CM Performance Profiles
 on property:sys.perf.profile=0
     stop mpdecision
-    stop thermal-engine
     write /sys/devices/system/cpu/cpu1/online 1
     write /sys/devices/system/cpu/cpu2/online 1
     write /sys/devices/system/cpu/cpu3/online 1
@@ -647,11 +625,9 @@ on property:sys.perf.profile=0
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor conservative
     write /sys/class/kgsl/kgsl-3d0/devfreq/governor msm-adreno-tz
     start mpdecision
-    start thermal-engine
 
 on property:sys.perf.profile=1
     stop mpdecision
-    stop thermal-engine
     write /sys/devices/system/cpu/cpu1/online 1
     write /sys/devices/system/cpu/cpu2/online 1
     write /sys/devices/system/cpu/cpu3/online 1
@@ -676,11 +652,9 @@ on property:sys.perf.profile=1
 
     write /sys/class/kgsl/kgsl-3d0/devfreq/governor msm-adreno-tz
     start mpdecision
-    start thermal-engine
 
 on property:sys.perf.profile=2
     stop mpdecision
-    stop thermal-engine
     write /sys/devices/system/cpu/cpu1/online 1
     write /sys/devices/system/cpu/cpu2/online 1
     write /sys/devices/system/cpu/cpu3/online 1
@@ -690,4 +664,3 @@ on property:sys.perf.profile=2
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor performance
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor performance
     write /sys/class/kgsl/kgsl-3d0/devfreq/governor performance
-    start thermal-engine
