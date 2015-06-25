@@ -31,13 +31,9 @@
 USE_O3 := true
 STRICT := true
 GRAPHITE := true
-<<<<<<< HEAD
 # LTO := true
-=======
-LTO := true
->>>>>>> ff0870f99ff461a6d2c139d0a40c9d6260830014
 A15_QUAD := true
-
+LIQUID_CHANGELOG :=true
 # USE_PREBUILT_CACHE=1
 
 TARGET_OTA_ASSERT_DEVICE := htc_m8,htc_m8whl,htc_m8wl,m8,m8wl,m8wlv,m8vzw,m8whl,m8spr
