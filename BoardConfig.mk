@@ -31,7 +31,11 @@
 USE_O3 := true
 STRICT := true
 GRAPHITE := true
+<<<<<<< HEAD
 # LTO := true
+=======
+LTO := true
+>>>>>>> ff0870f99ff461a6d2c139d0a40c9d6260830014
 A15_QUAD := true
 
 # USE_PREBUILT_CACHE=1
