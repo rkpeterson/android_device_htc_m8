@@ -37,6 +37,14 @@
 # 0P6B20000 - Verizon
 # 0P6B70000 - Sprint
 
+USE_O3 := true
+STRICT := true
+GRAPHITE := true
+# LTO := true
+A15_QUAD := true
+LIQUID_CHANGELOG :=true
+# USE_PREBUILT_CACHE=1
+
 # Assert
 TARGET_OTA_ASSERT_DEVICE := htc_m8,htc_m8whl,htc_m8wl,m8,m8wl,m8wlv,m8vzw,m8whl,m8spr
 
